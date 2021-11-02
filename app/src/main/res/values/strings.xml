@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">My_Workout_app</string>
+    <string name="exit">Exit</string>
+    <string name="workout_plan">Make a workout plan</string>
+    <string name="back">Go back</string>
+    <string name="exercise_name">exercise name</string>
+    <string name="number_of_reps">number of reps</string>
+    <string name="time_of_rest">time of rest</string>
+    <string name="save">Save</string>
+    <string name="add_exercise">Add Exercise</string>
+    <string name="delete">delete</string>
+    <string name="edit">edit</string>
+    <string name="Monday">Monday</string>
+    <string name="Monday2">Mon</string>
+    <string name="Tuesday">Tuesday</string>
+    <string name="Tuesday2">Tue</string>
+    <string name="Wednesday">Wednesday</string>
+    <string name="Wednesday2">Wed</string>
+    <string name="Thursday">Thursday</string>
+    <string name="Thursday2">Thu</string>
+    <string name="Friday">Friday</string>
+    <string name="Friday2">Fri</string>
+    <string name="Saturday">Saturday</string>
+    <string name="Saturday2">Sat</string>
+    <string name="Sunday">Sunday</string>
+    <string name="Sunday2">Sun</string>
+</resources>
