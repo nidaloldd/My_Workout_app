@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/activity_main.xml" value="0.18" />
-        <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/activity_main_menu.xml" value="0.16" />
+        <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/activity_main_menu.xml" value="0.2" />
+        <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/activity_manage.xml" value="0.16" />
         <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/activity_planing.xml" value="0.2" />
+        <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/list_row.xml" value="0.25" />
+        <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/popup_set.xml" value="0.25" />
       </map>
     </option>
   </component>

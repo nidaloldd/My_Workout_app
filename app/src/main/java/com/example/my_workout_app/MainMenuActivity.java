@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainMenuActivity  extends AppCompatActivity  implements View.OnClickListener {
 
+
+    private Button manage_plan_button;
     private Button make_plan_button;
     private Button exit_button;
 
@@ -17,9 +19,11 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+        manage_plan_button = findViewById(R.id.manageButtomID);
         make_plan_button = findViewById(R.id.workoutPlan_ButtonID);
         exit_button = findViewById(R.id.exit_ButtonID);
 
+        manage_plan_button.setOnClickListener(this);
         make_plan_button.setOnClickListener(this);
         exit_button.setOnClickListener(this);
     }
@@ -29,8 +33,12 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
 
         switch (view.getId()) {
             case R.id.workoutPlan_ButtonID:
-                Intent intent = new Intent(MainMenuActivity.this,PlaningActivity.class);
-                startActivity(intent);
+                Intent planIntent = new Intent(MainMenuActivity.this,PlaningActivity.class);
+                startActivity(planIntent);
+                break;
+            case R.id.manageButtomID:
+                Intent manageIntent = new Intent(MainMenuActivity.this,ManageActivity.class);
+                startActivity(manageIntent);
                 break;
             case R.id.exit_ButtonID:
                 finish();

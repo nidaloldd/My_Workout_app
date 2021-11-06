@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My_Workout_app</string>
+    <string name="app_name">My Workout app</string>
     <string name="exit">Exit</string>
     <string name="workout_plan">Make a workout plan</string>
     <string name="back">Go back</string>
@@ -24,4 +24,7 @@
     <string name="Saturday2">Sat</string>
     <string name="Sunday">Sunday</string>
     <string name="Sunday2">Sun</string>
+    <string name="set">set</string>
+    <string name="name_your_training">Name your training</string>
+    <string name="manage_your_workouts">Manage your workouts</string>
 </resources>
