@@ -11,51 +11,77 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        app:cardBackgroundColor="#4CAF50"
         app:cardCornerRadius="10dp"
         card_view:cardCornerRadius="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#61912A"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/workoutNameTextID"
+            <LinearLayout
+                android:layout_width="215dp"
+                android:layout_height="144dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/workoutNameTextID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="10dp"
+                    android:text="Text"
+                    android:textAlignment="gravity"
+                    android:textColor="#4E342E"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/numberOfExID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="10dp"
+                    android:text="TextView"
+                    android:textAlignment="gravity"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/daysTextID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="14dp"
+                    android:paddingTop="10dp"
+                    android:text="TextView"
+                    android:textAlignment="gravity"
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="14dp"
-                android:paddingTop="10dp"
-                android:text="Text"
-                android:textAlignment="gravity"
-                android:textColor="#4E342E"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/numberOfExID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="14dp"
-                android:paddingTop="10dp"
-                android:text="TextView"
-                android:textAlignment="gravity"
-                android:textSize="20sp" />
+                <Button
+                    android:id="@+id/deleteWorkoutButtonID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete_workout" />
 
-            <TextView
-                android:id="@+id/daysTextID"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="14dp"
-                android:paddingTop="10dp"
-                android:text="TextView"
-                android:textAlignment="gravity"
-                android:textSize="20sp" />
-
+                <Button
+                    android:id="@+id/setWorkoutButtonID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/set_workout" />
+            </LinearLayout>
 
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

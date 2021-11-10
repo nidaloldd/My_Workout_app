@@ -27,4 +27,6 @@
     <string name="set">set</string>
     <string name="name_your_training">Name your training</string>
     <string name="manage_your_workouts">Manage your workouts</string>
+    <string name="delete_workout">Delete workout</string>
+    <string name="set_workout">Set workout</string>
 </resources>

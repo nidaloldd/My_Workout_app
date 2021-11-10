@@ -19,7 +19,7 @@ import myClasses.WorkoutPlan;
 public class ManageActivity extends AppCompatActivity {
     private Button backButton;
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    //public RecyclerView.Adapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +40,8 @@ public class ManageActivity extends AppCompatActivity {
             }
         });
 
-        adapter = new ManageAdapter(this,((MyApplication)this.getApplication()).getAllPlan());
-        recyclerView.setAdapter(adapter);
+        MyApplication.adapter = new ManageAdapter(this,((MyApplication)this.getApplication()).getAllPlan());
+        recyclerView.setAdapter(MyApplication.adapter);
 
     }
 }

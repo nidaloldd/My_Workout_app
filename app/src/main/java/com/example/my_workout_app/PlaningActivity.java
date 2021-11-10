@@ -41,10 +41,12 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
     private CheckBox cb_5;
     private CheckBox cb_6;
     private CheckBox cb_7;
+    private final int maximumValOf_editText = 1000;
 
     private ArrayList<WorkoutPlan>workoutPlans;
     private ArrayList<Exercise> exercises ;
-    private Boolean[] days = new Boolean[]{};
+    private boolean[] days = new boolean[]{};
+    private Bundle extras;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,7 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
         relativeLayout_for_bottoms = (RelativeLayout) findViewById(R.id.RL_for_ButtomsID);
 
         exercises = new ArrayList<Exercise>();
-        days = new Boolean[7];
+        days = new boolean[7];
 
         cb_1 = findViewById(R.id.cb_1_ID);
         cb_2 = findViewById(R.id.cb_2_ID);
@@ -75,15 +77,43 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
         cb_7 = findViewById(R.id.cb_7_ID);
 
 
+        extras = getIntent().getExtras();
+        if (extras!= null){
+            workoutName.setText(extras.getString("name"));
+            set_checkBoxes(extras.getBooleanArray("days"));
+
+            ArrayList<String> ex_name = extras.getStringArrayList("ex_name");
+            ArrayList<Integer>ex_reps = extras.getIntegerArrayList("ex_reps");
+            ArrayList<Integer>ex_rest = extras.getIntegerArrayList("ex_rest");
+
+            exercises.clear();
+            for(int i=0;i<ex_name.size();i++){
+                Exercise ex = new Exercise(ex_name.get(i),ex_reps.get(i),ex_rest.get(i));
+                exercises.add(ex);
+            }
+            ReDrawLayout();
+        }
+
+
+
         addExerciseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String name = addName.getText().toString();
-                int reps = Integer.parseInt(addReps.getText().toString());
-                int rest = Integer.parseInt(addRest.getText().toString());
-                exercises.add(new Exercise(name,reps,rest));
-                ReDrawLayout();
-               // Clear_EditTexts();
+                String reps = addReps.getText().toString();
+                String rest = addRest.getText().toString();
+
+                if      (name.length()==0){Toast.makeText(PlaningActivity.this,"you must name your exercise",Toast.LENGTH_LONG).show();}
+                else if (reps.length()==0){Toast.makeText(PlaningActivity.this,"Please enter the number of reps",Toast.LENGTH_LONG).show();}
+                else if (rest.length()==0){Toast.makeText(PlaningActivity.this,"Please enter the rest time",Toast.LENGTH_LONG).show();}
+                else if (name.length()>50){Toast.makeText(PlaningActivity.this,"too much character for an exercise name",Toast.LENGTH_LONG).show();}
+                else if (reps.length()>=4){Toast.makeText(PlaningActivity.this,"number of reps must be lower than 1000",Toast.LENGTH_LONG).show();}
+                else if (rest.length()>=4){Toast.makeText(PlaningActivity.this,"number of reps must be lower than 1000",Toast.LENGTH_LONG).show();}
+                else{
+                    exercises.add(new Exercise(name,Integer.parseInt(reps),Integer.parseInt(rest)));
+                    ReDrawLayout();
+                }
+
             }
         });
 
@@ -102,31 +132,30 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.back_buttonID ){
-            Intent return_intent = getIntent();
-            setResult(RESULT_OK, return_intent);
+            //Intent return_intent = getIntent();
+            //setResult(RESULT_OK, return_intent);
             finish();
         }
         else if (id == R.id.save_buttonID ){
             get_CheckBoxes();
             String name = workoutName.getText().toString();
             ArrayList<Exercise> ex = exercises;
+            WorkoutPlan workoutPlan = new WorkoutPlan(name, ex, days);
 
-            WorkoutPlan workoutPlan = new WorkoutPlan(name,ex,days);
-            ((MyApplication)this.getApplication()).addAllPlan(workoutPlan);
+            if(name.length()==0){Toast.makeText(PlaningActivity.this,"you must name your training",Toast.LENGTH_LONG).show();}
+            else if (extras!= null){
+                int index = (extras.getInt("index"));
+                ((MyApplication) this.getApplication()).setIndexAllPlan(workoutPlan,index);
+                Toast.makeText(PlaningActivity.this,"Saved",Toast.LENGTH_LONG).show();
+                MyApplication.adapter.notifyItemChanged(index);
+                finish();
+            }
+            else {
+                ((MyApplication) this.getApplication()).addAllPlan(workoutPlan);
+                Toast.makeText(PlaningActivity.this,"Saved",Toast.LENGTH_LONG).show();
+                finish();
+            }
 
-            /*
-            workoutName.setText("");
-            days = new Boolean[]{false,false,false,false,false,false,false};
-            set_checkBoxes(days);
-            exercises.clear();
-
-            ReDrawLayout();
-            Clear_EditTexts();
-            */
-
-
-            Toast.makeText(PlaningActivity.this,"Saved",Toast.LENGTH_LONG).show();
-            finish();
         }
         else {
             for (int j = 0; j < exercises.size(); j++) {
@@ -142,7 +171,6 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
             }
         }
     }
-
 
     public void ReDrawLayout(){
 
@@ -209,7 +237,7 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    private void set_checkBoxes(Boolean[] days) {
+    private void set_checkBoxes(boolean[] days) {
         cb_1.setChecked(days[0]);
         cb_2.setChecked(days[1]);
         cb_3.setChecked(days[2]);
@@ -244,7 +272,7 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
 
         Exercise currentE = exercises.get(ex_index) ;
         Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.popup_set);
+        dialog.setContentView(R.layout.exercise_set);
         EditText setName =  dialog.findViewById(R.id.setNameID);
         EditText setReps =  dialog.findViewById(R.id.setRepsID);
         EditText setRest =  dialog.findViewById(R.id.setRestID);
@@ -257,10 +285,23 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
         setButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Exercise editedE = new Exercise(setName.getText().toString(),Integer.parseInt(setReps.getText().toString()),Integer.parseInt(setRest.getText().toString()));
-                exercises.set(ex_index,editedE);
-                ReDrawLayout();
-                dialog.dismiss();
+                String name = setName.getText().toString();
+                String reps = setReps.getText().toString();
+                String rest = setRest.getText().toString();
+
+                if      (name.length()==0){Toast.makeText(PlaningActivity.this,"you must name your exercise",Toast.LENGTH_LONG).show();}
+                else if (reps.length()==0){Toast.makeText(PlaningActivity.this,"Please enter the number of reps",Toast.LENGTH_LONG).show();}
+                else if (rest.length()==0){Toast.makeText(PlaningActivity.this,"Please enter the rest time",Toast.LENGTH_LONG).show();}
+                else if (name.length()>50){Toast.makeText(PlaningActivity.this,"too much character for an exercise name",Toast.LENGTH_LONG).show();}
+                else if (reps.length()>=4){Toast.makeText(PlaningActivity.this,"number of reps must be lower than 1000",Toast.LENGTH_LONG).show();}
+                else if (rest.length()>=4){Toast.makeText(PlaningActivity.this,"number of reps must be lower than 1000",Toast.LENGTH_LONG).show();}
+                else{
+                    Exercise editedE = new Exercise(name,Integer.parseInt(reps),Integer.parseInt(rest));
+                    exercises.set(ex_index,editedE);
+                    ReDrawLayout();
+                    dialog.dismiss();
+                }
+
             }
         });
         dialog.show();

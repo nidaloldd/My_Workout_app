@@ -1,16 +1,24 @@
 package Adapter;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.my_workout_app.ManageActivity;
+import com.example.my_workout_app.PlaningActivity;
 import com.example.my_workout_app.R;
 import java.util.ArrayList;
 
+import myClasses.Exercise;
 import myClasses.WorkoutPlan;
 
 public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder>{
@@ -37,13 +45,53 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
         StringBuilder SB = new StringBuilder();
 
         String[] days_name = new String[]{"Mon", "Tue", "Thu", "Wed", "Fri", "Sat","Sun"};
-        Boolean[] days = item.getDays_bool();
+        boolean[] days = item.getDays_bool();
         for (int i =0; i<7; i++){
             if(days[i])SB.append(days_name[i]+" ");
         }
 
         holder.days.setText(SB);
         holder.numberOfEx.setText("Number of Exercise: "+item.getExercises().size());
+
+
+        holder.deleteWorkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context,"delete",Toast.LENGTH_LONG).show();
+                workoutPlans.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
+                notifyItemRangeChanged(holder.getAdapterPosition(),workoutPlans.size());
+            }
+        });
+
+        holder.setWorkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context,"set",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context,PlaningActivity.class);
+                intent.putExtra("index",holder.getAdapterPosition());
+                intent.putExtra("name",workoutPlans.get(holder.getAdapterPosition()).getName());
+                intent.putExtra("days",workoutPlans.get(holder.getAdapterPosition()).getDays_bool());
+                //intent.putExtra("exercises",workoutPlans.get(holder.getAdapterPosition()).getExercises());
+
+                ArrayList<Exercise> ex = workoutPlans.get(holder.getAdapterPosition()).getExercises();
+                ArrayList<String> ex_name = new ArrayList<String>();
+                ArrayList<Integer>ex_reps = new ArrayList<Integer>();
+                ArrayList<Integer>ex_rest = new ArrayList<Integer>();
+                for(int i = 0 ; i< ex.size();i++){
+                    ex_name.add(ex.get(i).getName());
+                    ex_reps.add(ex.get(i).getReps_number());
+                    ex_rest.add(ex.get(i).getRest_time());
+                }
+                intent.putExtra("ex_name",ex_name);
+                intent.putExtra("ex_reps",ex_reps);
+                intent.putExtra("ex_rest",ex_rest);
+
+                //notifyItemChanged(holder.getAdapterPosition());
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -52,6 +100,8 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        public Button setWorkout;
+        public Button deleteWorkout;
         public TextView name;
         public TextView days;
         public TextView numberOfEx;
@@ -60,6 +110,8 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
 
             itemView.setOnClickListener(this);
 
+            setWorkout = (Button) itemView.findViewById(R.id.setWorkoutButtonID);
+            deleteWorkout = (Button) itemView.findViewById(R.id.deleteWorkoutButtonID);
             name = (TextView) itemView.findViewById(R.id.workoutNameTextID);
             days = (TextView) itemView.findViewById(R.id.daysTextID);
             numberOfEx = (TextView) itemView.findViewById(R.id.numberOfExID);
@@ -73,4 +125,7 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
             Toast.makeText(context,item.getName(),Toast.LENGTH_LONG).show();
         }
     }
+
 }
+
+

@@ -6,9 +6,9 @@ public class WorkoutPlan {
     private String name;
     private ArrayList<Exercise> exercises;
     // "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday";
-    private Boolean[] days_bool = new Boolean[]{};
+    private boolean[] days_bool = new boolean[0];
 
-    public WorkoutPlan(String name, ArrayList<Exercise> exercises, Boolean[] days_bool) {
+    public WorkoutPlan(String name, ArrayList<Exercise> exercises, boolean[] days_bool) {
         this.name = name;
         this.exercises = exercises;
         this.days_bool = days_bool;
@@ -31,11 +31,11 @@ public class WorkoutPlan {
         this.exercises = exercises;
     }
 
-    public Boolean[] getDays_bool() {
+    public boolean[] getDays_bool() {
         return days_bool;
     }
 
-    public void setDays_bool(Boolean[] days_bool) {
+    public void setDays_bool(boolean[] days_bool) {
         this.days_bool = days_bool;
     }
 }
