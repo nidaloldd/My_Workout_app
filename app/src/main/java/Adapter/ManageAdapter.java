@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.my_workout_app.DoWorkoutActivity;
 import com.example.my_workout_app.ManageActivity;
 import com.example.my_workout_app.PlaningActivity;
 import com.example.my_workout_app.R;
@@ -73,8 +74,8 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
                 intent.putExtra("name",workoutPlans.get(holder.getAdapterPosition()).getName());
                 intent.putExtra("days",workoutPlans.get(holder.getAdapterPosition()).getDays_bool());
                 //intent.putExtra("exercises",workoutPlans.get(holder.getAdapterPosition()).getExercises());
-
                 ArrayList<Exercise> ex = workoutPlans.get(holder.getAdapterPosition()).getExercises();
+
                 ArrayList<String> ex_name = new ArrayList<String>();
                 ArrayList<Integer>ex_reps = new ArrayList<Integer>();
                 ArrayList<Integer>ex_rest = new ArrayList<Integer>();
@@ -91,6 +92,34 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
                 context.startActivity(intent);
             }
         });
+        holder.doWorkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context,"DO workout",Toast.LENGTH_LONG).show();
+
+                Intent doWorkIntent = new Intent(context,DoWorkoutActivity.class);
+
+                doWorkIntent.putExtra("index",holder.getAdapterPosition());
+                doWorkIntent.putExtra("name",workoutPlans.get(holder.getAdapterPosition()).getName());
+                doWorkIntent.putExtra("days",workoutPlans.get(holder.getAdapterPosition()).getDays_bool());
+                ArrayList<Exercise> ex = workoutPlans.get(holder.getAdapterPosition()).getExercises();
+
+
+                ArrayList<String> ex_name = new ArrayList<String>();
+                ArrayList<Integer>ex_reps = new ArrayList<Integer>();
+                ArrayList<Integer>ex_rest = new ArrayList<Integer>();
+                for(int i = 0 ; i< ex.size();i++){
+                    ex_name.add(ex.get(i).getName());
+                    ex_reps.add(ex.get(i).getReps_number());
+                    ex_rest.add(ex.get(i).getRest_time());
+                }
+                doWorkIntent.putExtra("ex_name",ex_name);
+                doWorkIntent.putExtra("ex_reps",ex_reps);
+                doWorkIntent.putExtra("ex_rest",ex_rest);
+
+                context.startActivity(doWorkIntent);
+            }
+        });
 
     }
 
@@ -102,6 +131,7 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public Button setWorkout;
         public Button deleteWorkout;
+        public Button doWorkout;
         public TextView name;
         public TextView days;
         public TextView numberOfEx;
@@ -112,6 +142,7 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
 
             setWorkout = (Button) itemView.findViewById(R.id.setWorkoutButtonID);
             deleteWorkout = (Button) itemView.findViewById(R.id.deleteWorkoutButtonID);
+            doWorkout = (Button) itemView.findViewById(R.id.doWorkoutButtonID);
             name = (TextView) itemView.findViewById(R.id.workoutNameTextID);
             days = (TextView) itemView.findViewById(R.id.daysTextID);
             numberOfEx = (TextView) itemView.findViewById(R.id.numberOfExID);

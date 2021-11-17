@@ -8,8 +8,8 @@
     android:padding="40dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="342dp"
+        android:layout_height="164dp"
         android:layout_gravity="center"
         app:cardBackgroundColor="#4CAF50"
         app:cardCornerRadius="10dp"
@@ -21,8 +21,8 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="215dp"
-                android:layout_height="144dp"
+                android:layout_width="185dp"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
@@ -63,9 +63,15 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/doWorkoutButtonID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/do_workout" />
 
                 <Button
                     android:id="@+id/deleteWorkoutButtonID"
@@ -78,6 +84,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/set_workout" />
+
             </LinearLayout>
 
         </LinearLayout>

@@ -29,4 +29,6 @@
     <string name="manage_your_workouts">Manage your workouts</string>
     <string name="delete_workout">Delete workout</string>
     <string name="set_workout">Set workout</string>
+    <string name="do_workout">Do Workout</string>
+    <string name="done">Done</string>
 </resources>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A55050"
+    tools:context=".DoWorkoutActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="406dp"
+        android:layout_height="129dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <SeekBar
+            android:id="@+id/WorkoutStateSeekBarID"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:max="10"
+            android:progress="0"
+            android:progressTint="#3EA810"
+            android:thumb="@android:drawable/star_big_on" />
+
+        <TextView
+            android:id="@+id/workoutNameTextID"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:hint="The Workout name"
+            android:textAlignment="center"
+            android:textSize="34sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="371dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="44dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <TextView
+            android:id="@+id/exerciseNameTextID"
+            android:layout_width="match_parent"
+            android:layout_height="107dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/exerciseRepsTextID"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="227dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <EditText
+            android:id="@+id/RepsEditTextID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="completed reps"
+            android:inputType="number"
+            android:textAlignment="center"
+            android:textSize="34sp" />
+
+        <SeekBar
+            android:id="@+id/repsSeekBarID"
+            android:layout_width="match_parent"
+            android:layout_height="55dp" />
+
+        <Button
+            android:id="@+id/doneButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:text="@string/done" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

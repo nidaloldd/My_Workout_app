@@ -11,6 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Workout_app">
         <activity
+            android:name=".RestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DoWorkoutActivity"
+            android:exported="false" />
+        <activity
             android:name=".ManageActivity"
             android:exported="false" />
         <activity
@@ -21,6 +27,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
