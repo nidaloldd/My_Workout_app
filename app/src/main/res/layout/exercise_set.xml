@@ -21,8 +21,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="397dp"
-        android:layout_height="154dp"
+        android:layout_width="390dp"
+        android:layout_height="155dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,14 +49,36 @@
             android:textAlignment="center"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <EditText
-            android:id="@+id/setRestID"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number"
-            android:minHeight="48dp"
-            android:textAlignment="center"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <NumberPicker
+                android:id="@+id/minute_pickerID"
+                android:layout_width="185dp"
+                android:layout_height="match_parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=":"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <NumberPicker
+                android:id="@+id/secund_pickerID"
+                android:layout_width="185dp"
+                android:layout_height="match_parent"
+                tools:ignore="MissingConstraints" />
+        </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

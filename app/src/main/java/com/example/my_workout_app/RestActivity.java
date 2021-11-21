@@ -2,40 +2,81 @@ package com.example.my_workout_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.SystemClock;
+import android.os.CountDownTimer;
 import android.view.View;
-import android.widget.Chronometer;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Locale;
 
 public class RestActivity extends AppCompatActivity {
-    private Chronometer cronometer;
-    private long pauseOffset;
-    private boolean runing;
 
+    private long StartTimeInMillis = 0;
+    private long mTimeLeftInMillis = StartTimeInMillis;
+
+    private TextView Timer;
+    private CountDownTimer mCountDownTimer;
+    private Boolean mTimerRunning;
+    private Button doneButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rest);
-        cronometer = findViewById(R.id.cronoMeterID);
-        pauseOffset =0;
-    }
+        Timer = findViewById(R.id.TimerID);
+        doneButton = findViewById(R.id.DoneButtonID);
+        StartTimeInMillis = getTimesInMillisecond();
+        mTimeLeftInMillis = StartTimeInMillis;
+        startTimer();
 
-    public void startCronometer(View view){
-        if(!runing){
-            cronometer.setBase(SystemClock.elapsedRealtime()-pauseOffset);
-            cronometer.start();
-            runing = true;
-        }
-    }
-    public void pauseCronometer(View view){
-        if(runing){
-            cronometer.stop();
-            pauseOffset = SystemClock.elapsedRealtime()-cronometer.getBase();
-            runing = false;
-        }
+
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
-    public void resetCronometer(View view){
-        cronometer.setBase(SystemClock.elapsedRealtime());
-        pauseOffset=0;
+    private void  startTimer(){
+        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mTimeLeftInMillis = millisUntilFinished;
+                updateCountDownText();
+            }
+            @Override
+            public void onFinish() {
+                mTimerRunning =false;
+                finish();
+            }
+        }.start();
+
+        mTimerRunning = true;
+
+    }
+
+    private  void  updateCountDownText(){
+        int minutes = (int) (mTimeLeftInMillis/1000)/60;
+        int seconds = (int) (mTimeLeftInMillis/1000)%60;
+
+        String timeLeftFormatted = String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
+        Timer.setText(timeLeftFormatted);
+    }
+
+    private int getTimesInMillisecond(){
+        Bundle extras = getIntent().getExtras();
+        String timeString = extras.getString("getTime");
+
+        int D = timeString.indexOf(":");
+
+        int minutes = Integer.parseInt(timeString.substring(0,D));
+        int seconds = Integer.parseInt(timeString.substring(D+1,timeString.length()));
+
+        Toast.makeText(this,String.valueOf(seconds),Toast.LENGTH_LONG).show();
+
+        return minutes*1000*60+seconds*1000;
     }
 }
+
+

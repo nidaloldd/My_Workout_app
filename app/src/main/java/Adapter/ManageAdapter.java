@@ -78,7 +78,7 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
 
                 ArrayList<String> ex_name = new ArrayList<String>();
                 ArrayList<Integer>ex_reps = new ArrayList<Integer>();
-                ArrayList<Integer>ex_rest = new ArrayList<Integer>();
+                ArrayList<String>ex_rest = new ArrayList<String>();
                 for(int i = 0 ; i< ex.size();i++){
                     ex_name.add(ex.get(i).getName());
                     ex_reps.add(ex.get(i).getReps_number());
@@ -107,7 +107,7 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
 
                 ArrayList<String> ex_name = new ArrayList<String>();
                 ArrayList<Integer>ex_reps = new ArrayList<Integer>();
-                ArrayList<Integer>ex_rest = new ArrayList<Integer>();
+                ArrayList<String>ex_rest = new ArrayList<String>();
                 for(int i = 0 ; i< ex.size();i++){
                     ex_name.add(ex.get(i).getName());
                     ex_reps.add(ex.get(i).getReps_number());

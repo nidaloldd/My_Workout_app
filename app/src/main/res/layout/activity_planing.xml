@@ -111,19 +111,37 @@
             android:textColor="@color/black"
             android:textColorHint="#757575" />
 
-        <EditText
-            android:id="@+id/add_restID"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="120dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/time_of_rest"
-            android:inputType="number"
-            android:minHeight="48dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textColorHint="#757575" />
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <NumberPicker
+                android:id="@+id/minute_pickerID"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=":"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <NumberPicker
+                android:id="@+id/secund_pickerID"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                tools:ignore="MissingConstraints" />
+        </LinearLayout>
     </LinearLayout>
 
     <Button

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -23,7 +24,6 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
 
     private EditText addName;
     private EditText addReps;
-    private EditText addRest;
     private EditText workoutName;
     private Button addExerciseButton;
     private Button backButton;
@@ -42,6 +42,8 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
     private CheckBox cb_6;
     private CheckBox cb_7;
     private final int maximumValOf_editText = 1000;
+    private NumberPicker minutesPicker;
+    private NumberPicker secondsPicker;
 
     private ArrayList<WorkoutPlan>workoutPlans;
     private ArrayList<Exercise> exercises ;
@@ -54,7 +56,8 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_planing);
         addName = findViewById(R.id.add_nameID);
         addReps = findViewById(R.id.add_repsID);
-        addRest = findViewById(R.id.add_restID);
+        minutesPicker = findViewById(R.id.minute_pickerID);
+        secondsPicker = findViewById(R.id.secund_pickerID);
         workoutName = findViewById(R.id.get_nameID);
         addExerciseButton = findViewById(R.id.add_exercise_buttonID);
         TV = new ArrayList<TextView>();
@@ -67,6 +70,19 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
 
         exercises = new ArrayList<Exercise>();
         days = new boolean[7];
+
+        int a =60;
+        String[] data = new String[a];
+        for (int i =0; i<a; i++){
+            data[i] = String.valueOf(i);
+        }
+        minutesPicker.setMinValue(0);
+        minutesPicker.setMaxValue(data.length-1);
+        minutesPicker.setDisplayedValues(data);
+        secondsPicker.setMinValue(0);
+        secondsPicker.setMaxValue(data.length-1);
+        secondsPicker.setDisplayedValues(data);
+
 
         cb_1 = findViewById(R.id.cb_1_ID);
         cb_2 = findViewById(R.id.cb_2_ID);
@@ -84,7 +100,7 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
 
             ArrayList<String> ex_name = extras.getStringArrayList("ex_name");
             ArrayList<Integer>ex_reps = extras.getIntegerArrayList("ex_reps");
-            ArrayList<Integer>ex_rest = extras.getIntegerArrayList("ex_rest");
+            ArrayList<String>ex_rest = extras.getStringArrayList("ex_rest");
 
             exercises.clear();
             for(int i=0;i<ex_name.size();i++){
@@ -101,16 +117,15 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
             public void onClick(View view) {
                 String name = addName.getText().toString();
                 String reps = addReps.getText().toString();
-                String rest = addRest.getText().toString();
+                String rest = minutesPicker.getValue()+":"+secondsPicker.getValue();
 
                 if      (name.length()==0){Toast.makeText(PlaningActivity.this,"you must name your exercise",Toast.LENGTH_LONG).show();}
                 else if (reps.length()==0){Toast.makeText(PlaningActivity.this,"Please enter the number of reps",Toast.LENGTH_LONG).show();}
                 else if (rest.length()==0){Toast.makeText(PlaningActivity.this,"Please enter the rest time",Toast.LENGTH_LONG).show();}
                 else if (name.length()>50){Toast.makeText(PlaningActivity.this,"too much character for an exercise name",Toast.LENGTH_LONG).show();}
                 else if (reps.length()>=4){Toast.makeText(PlaningActivity.this,"number of reps must be lower than 1000",Toast.LENGTH_LONG).show();}
-                else if (rest.length()>=4){Toast.makeText(PlaningActivity.this,"number of reps must be lower than 1000",Toast.LENGTH_LONG).show();}
                 else{
-                    exercises.add(new Exercise(name,Integer.parseInt(reps),Integer.parseInt(rest)));
+                    exercises.add(new Exercise(name,Integer.parseInt(reps),rest));
                     ReDrawLayout();
                 }
 
@@ -120,12 +135,6 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
         backButton.setOnClickListener(this);
         saveButton.setOnClickListener(this);
 
-    }
-
-    public void Clear_EditTexts (){
-        addName.setText("");
-        addReps.setText("");
-        addRest.setText("");
     }
 
     @Override
@@ -275,28 +284,48 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
         dialog.setContentView(R.layout.exercise_set);
         EditText setName =  dialog.findViewById(R.id.setNameID);
         EditText setReps =  dialog.findViewById(R.id.setRepsID);
-        EditText setRest =  dialog.findViewById(R.id.setRestID);
         Button setButton =  dialog.findViewById(R.id.setButtonID);
+        NumberPicker minutesPicker2 = dialog.findViewById(R.id.minute_pickerID);
+        NumberPicker secondsPicker2 = dialog.findViewById(R.id.secund_pickerID);
+
+        int a =60;
+        String[] data = new String[a];
+        for (int i =0; i<a; i++){
+            data[i] = String.valueOf(i);
+        }
+        minutesPicker2.setMinValue(0);
+        minutesPicker2.setMaxValue(data.length-1);
+        minutesPicker2.setDisplayedValues(data);
+        secondsPicker2.setMinValue(0);
+        secondsPicker2.setMaxValue(data.length-1);
+        secondsPicker2.setDisplayedValues(data);
+
 
         setName.setText(currentE.getName());
         setReps.setText(String.valueOf(currentE.getReps_number()));
-        setRest.setText(String.valueOf(currentE.getRest_time()));
+        String timeString = currentE.getRest_time();
+        int D = timeString.indexOf(":");
+        int minutes = Integer.parseInt(timeString.substring(0,D));
+        int seconds = Integer.parseInt(timeString.substring(D+1,timeString.length()));
+        minutesPicker2.setValue(minutes);
+        secondsPicker2.setValue(seconds);
+
 
         setButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String name = setName.getText().toString();
                 String reps = setReps.getText().toString();
-                String rest = setRest.getText().toString();
+                String rest = minutesPicker2.getValue()+":"+secondsPicker2.getValue();
 
                 if      (name.length()==0){Toast.makeText(PlaningActivity.this,"you must name your exercise",Toast.LENGTH_LONG).show();}
+                else if (reps.length()==0){Toast.makeText(PlaningActivity.this,"Please enter the number of reps",Toast.LENGTH_LONG).show();}
                 else if (reps.length()==0){Toast.makeText(PlaningActivity.this,"Please enter the number of reps",Toast.LENGTH_LONG).show();}
                 else if (rest.length()==0){Toast.makeText(PlaningActivity.this,"Please enter the rest time",Toast.LENGTH_LONG).show();}
                 else if (name.length()>50){Toast.makeText(PlaningActivity.this,"too much character for an exercise name",Toast.LENGTH_LONG).show();}
                 else if (reps.length()>=4){Toast.makeText(PlaningActivity.this,"number of reps must be lower than 1000",Toast.LENGTH_LONG).show();}
-                else if (rest.length()>=4){Toast.makeText(PlaningActivity.this,"number of reps must be lower than 1000",Toast.LENGTH_LONG).show();}
                 else{
-                    Exercise editedE = new Exercise(name,Integer.parseInt(reps),Integer.parseInt(rest));
+                    Exercise editedE = new Exercise(name,Integer.parseInt(reps),rest);
                     exercises.set(ex_index,editedE);
                     ReDrawLayout();
                     dialog.dismiss();

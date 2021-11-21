@@ -2,7 +2,9 @@ package com.example.my_workout_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,13 +51,20 @@ public class DoWorkoutActivity extends AppCompatActivity {
         doneButton = (Button) findViewById(R.id.doneButtonID);
 
 
+        //workoutStateSeekbar.setEnabled(false);
         workoutStateSeekbar.setMax(ex_name.size());
         workoutStateSeekbar.setProgress(currentExIndex);
         workoutNameText.setText(workoutName);
         exerciseNameText.setText(ex_name.get(currentExIndex));
         exerciseRepsText.setText("Try to Do "+ ex_reps.get(currentExIndex)+" Reps");
 
-
+        //User won't be able to touch and change the progress this way.
+        workoutStateSeekbar.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
         repsSeekBar.setMax(ex_reps.get(index));
         repsSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -85,6 +94,10 @@ public class DoWorkoutActivity extends AppCompatActivity {
                     repsSeekBar.setProgress(0);
                     exerciseNameText.setText(ex_name.get(currentExIndex));
                     exerciseRepsText.setText("Try to Do "+ ex_reps.get(currentExIndex)+" Reps");
+
+                    Intent intent = new Intent(DoWorkoutActivity.this,RestActivity.class);
+                    intent.putExtra("getTime", ex_rest.get(currentExIndex));
+                    startActivity(intent);
 
                 }
                 else{

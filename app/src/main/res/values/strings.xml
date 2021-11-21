@@ -31,4 +31,5 @@
     <string name="set_workout">Set workout</string>
     <string name="do_workout">Do Workout</string>
     <string name="done">Done</string>
+    <string name="skip_rest">Skip rest</string>
 </resources>
