@@ -1,11 +1,16 @@
 package com.example.my_workout_app;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.VibrationEffect;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Vibrator;
 
 import java.util.Locale;
 
@@ -40,7 +45,15 @@ public class RestActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                finish();
+                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                // Vibrate for 500 milliseconds
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+                } else {
+                    //deprecated in API 26
+                    v.vibrate(500);
+                }
+                doneButton.setText("Next exercise");
             }
         }.start();
 
@@ -66,6 +79,10 @@ public class RestActivity extends AppCompatActivity {
         Toast.makeText(this,String.valueOf(seconds),Toast.LENGTH_LONG).show();
 
         return minutes*1000*60+seconds*1000;
+    }
+    @Override
+    public void onBackPressed() {
+
     }
 }
 

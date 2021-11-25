@@ -110,4 +110,8 @@ public class DoWorkoutActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onBackPressed() {
+
+    }
 }

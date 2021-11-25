@@ -322,5 +322,9 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
         });
         dialog.show();
     }
+    @Override
+    public void onBackPressed() {
+
+    }
 }
 

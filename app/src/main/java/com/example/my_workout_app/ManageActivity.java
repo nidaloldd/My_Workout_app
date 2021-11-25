@@ -55,4 +55,8 @@ public class ManageActivity extends AppCompatActivity {
         recyclerView.setAdapter(MyApplication.adapter);
 
     }
+    @Override
+    public void onBackPressed() {
+
+    }
 }
