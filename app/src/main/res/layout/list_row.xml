@@ -11,13 +11,13 @@
         android:layout_width="342dp"
         android:layout_height="164dp"
         android:layout_gravity="center"
-        app:cardBackgroundColor="#4CAF50"
         app:cardCornerRadius="10dp"
         card_view:cardCornerRadius="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/w0"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -34,7 +34,6 @@
                     android:paddingTop="10dp"
                     android:text="Text"
                     android:textAlignment="gravity"
-                    android:textColor="#4E342E"
                     android:textSize="20sp" />
 
                 <TextView

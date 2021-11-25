@@ -2,6 +2,7 @@ package com.example.my_workout_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -26,6 +27,7 @@ public class DoWorkoutActivity extends AppCompatActivity {
     private Button doneButton;
 
     private int currentExIndex =0;
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +42,15 @@ public class DoWorkoutActivity extends AppCompatActivity {
         ArrayList<Integer>ex_rest = extras.getIntegerArrayList("ex_rest");
 
 
-        workoutStateSeekbar = (SeekBar) findViewById(R.id.WorkoutStateSeekBarID);
-        workoutNameText = (TextView) findViewById(R.id.workoutNameTextID);
+        workoutStateSeekbar = findViewById(R.id.WorkoutStateSeekBarID);
+        workoutNameText = findViewById(R.id.workoutNameTextID);
 
-        exerciseNameText = (TextView) findViewById(R.id.exerciseNameTextID);
-        exerciseRepsText = (TextView) findViewById(R.id.exerciseRepsTextID);
+        exerciseNameText = findViewById(R.id.exerciseNameTextID);
+        exerciseRepsText = findViewById(R.id.exerciseRepsTextID);
 
-        RepsEditText = (EditText) findViewById(R.id.RepsEditTextID);
-        repsSeekBar = (SeekBar) findViewById(R.id.repsSeekBarID);
-        doneButton = (Button) findViewById(R.id.doneButtonID);
+        RepsEditText = findViewById(R.id.RepsEditTextID);
+        repsSeekBar = findViewById(R.id.repsSeekBarID);
+        doneButton = findViewById(R.id.doneButtonID);
 
 
         //workoutStateSeekbar.setEnabled(false);

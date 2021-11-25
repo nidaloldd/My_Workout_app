@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#C82525"
+    android:background="@color/w0"
     android:textAlignment="center"
-    android:textColorHint="#757575"
     tools:context=".PlaningActivity">
 
     <Button
@@ -78,7 +77,6 @@
         android:layout_marginTop="50dp"
         android:layout_marginBottom="200dp"
         android:orientation="horizontal"
-        android:textColorHint="#757575"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,9 +92,7 @@
             android:hint="@string/exercise_name"
             android:inputType="text"
             android:minHeight="48dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textColorHint="#757575" />
+            android:textAlignment="center" />
 
         <EditText
             android:id="@+id/add_repsID"
@@ -107,9 +103,7 @@
             android:hint="@string/number_of_reps"
             android:inputType="number"
             android:minHeight="48dp"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textColorHint="#757575" />
+            android:textAlignment="center" />
 
         <LinearLayout
             android:layout_width="120dp"
@@ -162,7 +156,7 @@
         android:layout_width="409dp"
         android:layout_height="63dp"
         android:layout_marginBottom="320dp"
-        android:background="#634646"
+        android:background="@color/w0"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

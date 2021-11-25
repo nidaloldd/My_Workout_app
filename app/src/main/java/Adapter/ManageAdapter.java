@@ -1,20 +1,18 @@
 package Adapter;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.my_workout_app.DoWorkoutActivity;
-import com.example.my_workout_app.ManageActivity;
+import com.example.my_workout_app.MyApplication;
 import com.example.my_workout_app.PlaningActivity;
 import com.example.my_workout_app.R;
 import java.util.ArrayList;
@@ -62,6 +60,8 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
                 workoutPlans.remove(holder.getAdapterPosition());
                 notifyItemRemoved(holder.getAdapterPosition());
                 notifyItemRangeChanged(holder.getAdapterPosition(),workoutPlans.size());
+
+                ((MyApplication)context.getApplicationContext()).saveData();
             }
         });
 
@@ -76,9 +76,9 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
                 //intent.putExtra("exercises",workoutPlans.get(holder.getAdapterPosition()).getExercises());
                 ArrayList<Exercise> ex = workoutPlans.get(holder.getAdapterPosition()).getExercises();
 
-                ArrayList<String> ex_name = new ArrayList<String>();
-                ArrayList<Integer>ex_reps = new ArrayList<Integer>();
-                ArrayList<String>ex_rest = new ArrayList<String>();
+                ArrayList<String> ex_name = new ArrayList<>();
+                ArrayList<Integer>ex_reps = new ArrayList<>();
+                ArrayList<String>ex_rest = new ArrayList<>();
                 for(int i = 0 ; i< ex.size();i++){
                     ex_name.add(ex.get(i).getName());
                     ex_reps.add(ex.get(i).getReps_number());
@@ -105,9 +105,9 @@ public class ManageAdapter extends RecyclerView.Adapter<ManageAdapter.ViewHolder
                 ArrayList<Exercise> ex = workoutPlans.get(holder.getAdapterPosition()).getExercises();
 
 
-                ArrayList<String> ex_name = new ArrayList<String>();
-                ArrayList<Integer>ex_reps = new ArrayList<Integer>();
-                ArrayList<String>ex_rest = new ArrayList<String>();
+                ArrayList<String> ex_name = new ArrayList<>();
+                ArrayList<Integer>ex_reps = new ArrayList<>();
+                ArrayList<String>ex_rest = new ArrayList<>();
                 for(int i = 0 ; i< ex.size();i++){
                     ex_name.add(ex.get(i).getName());
                     ex_reps.add(ex.get(i).getReps_number());

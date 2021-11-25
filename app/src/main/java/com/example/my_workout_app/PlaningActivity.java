@@ -3,7 +3,6 @@ package com.example.my_workout_app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,19 +32,11 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
     private ArrayList<Button> E_BT ; // Edit_Buttons
     private RelativeLayout relativeLayout_for_texts;
     private RelativeLayout relativeLayout_for_bottoms;
-    private ScrollView generatedScrollView;
-    private CheckBox cb_1;
-    private CheckBox cb_2;
-    private CheckBox cb_3;
-    private CheckBox cb_4;
-    private CheckBox cb_5;
-    private CheckBox cb_6;
-    private CheckBox cb_7;
-    private final int maximumValOf_editText = 1000;
+    private CheckBox cb_1,cb_2,cb_3,cb_4,cb_5,cb_6,cb_7;
+
     private NumberPicker minutesPicker;
     private NumberPicker secondsPicker;
 
-    private ArrayList<WorkoutPlan>workoutPlans;
     private ArrayList<Exercise> exercises ;
     private boolean[] days = new boolean[]{};
     private Bundle extras;
@@ -65,8 +56,8 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
         E_BT = new ArrayList<Button>();
         backButton = findViewById(R.id.back_buttonID);
         saveButton = findViewById(R.id.save_buttonID);
-        relativeLayout_for_texts = (RelativeLayout) findViewById(R.id.RL_for_textsID);
-        relativeLayout_for_bottoms = (RelativeLayout) findViewById(R.id.RL_for_ButtomsID);
+        relativeLayout_for_texts = findViewById(R.id.RL_for_textsID);
+        relativeLayout_for_bottoms = findViewById(R.id.RL_for_ButtomsID);
 
         exercises = new ArrayList<Exercise>();
         days = new boolean[7];
@@ -121,7 +112,6 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
 
                 if      (name.length()==0){Toast.makeText(PlaningActivity.this,"you must name your exercise",Toast.LENGTH_LONG).show();}
                 else if (reps.length()==0){Toast.makeText(PlaningActivity.this,"Please enter the number of reps",Toast.LENGTH_LONG).show();}
-                else if (rest.length()==0){Toast.makeText(PlaningActivity.this,"Please enter the rest time",Toast.LENGTH_LONG).show();}
                 else if (name.length()>50){Toast.makeText(PlaningActivity.this,"too much character for an exercise name",Toast.LENGTH_LONG).show();}
                 else if (reps.length()>=4){Toast.makeText(PlaningActivity.this,"number of reps must be lower than 1000",Toast.LENGTH_LONG).show();}
                 else{
@@ -141,8 +131,6 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         int id = view.getId();
         if (id == R.id.back_buttonID ){
-            //Intent return_intent = getIntent();
-            //setResult(RESULT_OK, return_intent);
             finish();
         }
         else if (id == R.id.save_buttonID ){
@@ -164,7 +152,7 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
                 Toast.makeText(PlaningActivity.this,"Saved",Toast.LENGTH_LONG).show();
                 finish();
             }
-
+            ((MyApplication)this.getApplication()).saveData();
         }
         else {
             for (int j = 0; j < exercises.size(); j++) {
@@ -195,19 +183,19 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
 
             ScrollView scrollView = new ScrollView(PlaningActivity.this);
             ScrollView.LayoutParams paramsScroll = new ScrollView.LayoutParams
-                    ((int) ScrollView.LayoutParams.WRAP_CONTENT, (int) ScrollView.LayoutParams.WRAP_CONTENT);
+                    (ScrollView.LayoutParams.WRAP_CONTENT, ScrollView.LayoutParams.WRAP_CONTENT);
             paramsScroll.bottomMargin = 100;
             scrollView.setLayoutParams(paramsScroll);
 
             TV.add(new TextView(PlaningActivity.this));
             RelativeLayout.LayoutParams paramsTV = new RelativeLayout.LayoutParams
-                    ((int) RelativeLayout.LayoutParams.MATCH_PARENT, (int) RelativeLayout.LayoutParams.MATCH_PARENT);
+                    (RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
             D_BT.add(new Button(PlaningActivity.this));
             RelativeLayout.LayoutParams paramsD_BT=new RelativeLayout.LayoutParams
-                    ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    (RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             E_BT.add(new Button(PlaningActivity.this));
             RelativeLayout.LayoutParams paramsE_BT=new RelativeLayout.LayoutParams
-                    ((int) RelativeLayout.LayoutParams.WRAP_CONTENT,(int) RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    (RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
             String PrevText;
             if (i!=0){
@@ -306,7 +294,7 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
         String timeString = currentE.getRest_time();
         int D = timeString.indexOf(":");
         int minutes = Integer.parseInt(timeString.substring(0,D));
-        int seconds = Integer.parseInt(timeString.substring(D+1,timeString.length()));
+        int seconds = Integer.parseInt(timeString.substring(D+1));
         minutesPicker2.setValue(minutes);
         secondsPicker2.setValue(seconds);
 
@@ -321,7 +309,6 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
                 if      (name.length()==0){Toast.makeText(PlaningActivity.this,"you must name your exercise",Toast.LENGTH_LONG).show();}
                 else if (reps.length()==0){Toast.makeText(PlaningActivity.this,"Please enter the number of reps",Toast.LENGTH_LONG).show();}
                 else if (reps.length()==0){Toast.makeText(PlaningActivity.this,"Please enter the number of reps",Toast.LENGTH_LONG).show();}
-                else if (rest.length()==0){Toast.makeText(PlaningActivity.this,"Please enter the rest time",Toast.LENGTH_LONG).show();}
                 else if (name.length()>50){Toast.makeText(PlaningActivity.this,"too much character for an exercise name",Toast.LENGTH_LONG).show();}
                 else if (reps.length()>=4){Toast.makeText(PlaningActivity.this,"number of reps must be lower than 1000",Toast.LENGTH_LONG).show();}
                 else{

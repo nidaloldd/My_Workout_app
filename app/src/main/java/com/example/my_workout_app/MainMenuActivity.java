@@ -2,6 +2,7 @@ package com.example.my_workout_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,8 @@ public class MainMenuActivity  extends AppCompatActivity  implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+        ((MyApplication)this.getApplication()).loadData();
+
         manage_plan_button = findViewById(R.id.manageButtomID);
         make_plan_button = findViewById(R.id.workoutPlan_ButtonID);
         exit_button = findViewById(R.id.exit_ButtonID);
@@ -28,6 +31,7 @@ public class MainMenuActivity  extends AppCompatActivity  implements View.OnClic
         exit_button.setOnClickListener(this);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
 

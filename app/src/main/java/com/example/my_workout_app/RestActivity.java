@@ -3,7 +3,6 @@ package com.example.my_workout_app;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,8 +15,6 @@ public class RestActivity extends AppCompatActivity {
     private long mTimeLeftInMillis = StartTimeInMillis;
 
     private TextView Timer;
-    private CountDownTimer mCountDownTimer;
-    private Boolean mTimerRunning;
     private Button doneButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,29 +27,22 @@ public class RestActivity extends AppCompatActivity {
         startTimer();
 
 
-        doneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        doneButton.setOnClickListener(view -> finish());
 
     }
     private void  startTimer(){
-        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis,1000) {
+        CountDownTimer mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 mTimeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
             }
+
             @Override
             public void onFinish() {
-                mTimerRunning =false;
                 finish();
             }
         }.start();
-
-        mTimerRunning = true;
 
     }
 
@@ -71,7 +61,7 @@ public class RestActivity extends AppCompatActivity {
         int D = timeString.indexOf(":");
 
         int minutes = Integer.parseInt(timeString.substring(0,D));
-        int seconds = Integer.parseInt(timeString.substring(D+1,timeString.length()));
+        int seconds = Integer.parseInt(timeString.substring(D+1));
 
         Toast.makeText(this,String.valueOf(seconds),Toast.LENGTH_LONG).show();
 
