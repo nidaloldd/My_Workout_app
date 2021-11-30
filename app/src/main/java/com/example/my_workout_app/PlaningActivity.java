@@ -3,6 +3,7 @@ package com.example.my_workout_app;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -204,9 +205,9 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
 
             final int rowLength = 25;
             plusRow += (int)Math.ceil(PrevText.length()/rowLength);
-            int space = (i+plusRow)*120;
+            int space = (i+plusRow)*160;
 
-            paramsTV.leftMargin = 70;    paramsD_BT.leftMargin = 0;    paramsE_BT.leftMargin = 150;
+            paramsTV.leftMargin = 70;    paramsD_BT.leftMargin = 0;    paramsE_BT.leftMargin = 250;
             paramsTV.topMargin  = space; paramsD_BT.topMargin = space; paramsE_BT.topMargin = space;
 
             String CurText = exercises.get(i).getName() + "\t" + exercises.get(i).getReps_number() + "\t" + exercises.get(i).getRest_time();
@@ -220,12 +221,15 @@ public class PlaningActivity extends AppCompatActivity implements View.OnClickLi
             D_BT.get(i).setText(R.string.delete);
             setButtonLook(D_BT.get(i));
             D_BT.get(i).setLayoutParams(paramsD_BT);
+            D_BT.get(i).setTextColor(Color.BLACK);
+            D_BT.get(i).setBackgroundColor(Color.RED);
 
             E_BT.get(i).setId(exercises.size()+i);
             E_BT.get(i).setOnClickListener(this);
             E_BT.get(i).setText(R.string.edit);
             setButtonLook(E_BT.get(i));
             E_BT.get(i).setLayoutParams(paramsE_BT);
+            E_BT.get(i).setBackgroundColor(Color.RED);
 
             scrollView.addView(TV.get(i));
             relativeLayout_for_texts.addView(scrollView);

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/w0">
+    android:background="@color/p1">
 
     <Button
         android:id="@+id/setButtonID"
@@ -14,6 +14,7 @@
         android:clickable="true"
         android:onClick="set_OnClick"
         android:text="@string/set"
+        android:textColor="@color/Text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

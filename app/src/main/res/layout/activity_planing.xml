@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/w0"
+    android:background="@color/p1"
     android:textAlignment="center"
     tools:context=".PlaningActivity">
 
@@ -15,6 +15,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="50dp"
         android:text="@string/add_exercise"
+        android:textColor="@color/Text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/get_nameID"
         app:layout_constraintStart_toStartOf="@+id/get_nameID"
@@ -27,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="@string/back"
+        android:textColor="@color/Text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -92,7 +94,8 @@
             android:hint="@string/exercise_name"
             android:inputType="text"
             android:minHeight="48dp"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColorHint="@color/Text" />
 
         <EditText
             android:id="@+id/add_repsID"
@@ -103,7 +106,8 @@
             android:hint="@string/number_of_reps"
             android:inputType="number"
             android:minHeight="48dp"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColorHint="@color/Text" />
 
         <LinearLayout
             android:layout_width="120dp"
@@ -144,6 +148,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="@string/save"
+        android:textColor="@color/Text"
         app:layout_constraintBottom_toBottomOf="@+id/back_buttonID"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="1.0"
@@ -156,7 +161,7 @@
         android:layout_width="409dp"
         android:layout_height="63dp"
         android:layout_marginBottom="320dp"
-        android:background="@color/w0"
+        android:background="@color/p2"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -169,9 +174,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
+            android:checked="false"
             android:drawableTop="?android:attr/listChoiceIndicatorMultiple"
             android:text="@string/Monday2"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/Text"
+            app:useMaterialThemeColors="false" />
 
         <CheckBox
             android:id="@+id/cb_2_ID"
@@ -181,7 +189,9 @@
             android:button="@null"
             android:drawableTop="?android:attr/listChoiceIndicatorMultiple"
             android:text="@string/Tuesday2"
-            android:textAlignment="center" />/>
+            android:textAlignment="center"
+            android:textColor="@color/Text"
+            app:useMaterialThemeColors="false" />/>
 
         <CheckBox
             android:id="@+id/cb_3_ID"
@@ -191,7 +201,8 @@
             android:button="@null"
             android:drawableTop="?android:attr/listChoiceIndicatorMultiple"
             android:text="@string/Wednesday2"
-            android:textAlignment="center" />/>
+            android:textAlignment="center"
+            android:textColor="@color/Text" />/>
 
         <CheckBox
             android:id="@+id/cb_4_ID"
@@ -201,7 +212,8 @@
             android:button="@null"
             android:drawableTop="?android:attr/listChoiceIndicatorMultiple"
             android:text="@string/Thursday2"
-            android:textAlignment="center" /><![CDATA[/>
+            android:textAlignment="center"
+            android:textColor="@color/Text" /><![CDATA[/>
 
         />
 
@@ -215,7 +227,8 @@
             android:button="@null"
             android:drawableTop="?android:attr/listChoiceIndicatorMultiple"
             android:text="@string/Friday2"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/Text" />
 
         <CheckBox
             android:id="@+id/cb_6_ID"
@@ -225,7 +238,8 @@
             android:button="@null"
             android:drawableTop="?android:attr/listChoiceIndicatorMultiple"
             android:text="@string/Saturday2"
-            android:textAlignment="center" />/>
+            android:textAlignment="center"
+            android:textColor="@color/Text" />/>
 
         <CheckBox
             android:id="@+id/cb_7_ID"
@@ -235,14 +249,15 @@
             android:button="@null"
             android:drawableTop="?android:attr/listChoiceIndicatorMultiple"
             android:text="@string/Sunday2"
-            android:textAlignment="center" />/>
+            android:textAlignment="center"
+            android:textColor="@color/Text" />/>
     </LinearLayout>
 
     <ScrollView
 
         android:id="@+id/scrollView2"
-        android:layout_width="362dp"
-        android:layout_height="330dp"
+        android:layout_width="370dp"
+        android:layout_height="262dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="20dp"
@@ -261,15 +276,8 @@
 
             <RelativeLayout
                 android:id="@+id/RL_for_textsID"
-                android:layout_width="100pt"
-                android:layout_height="match_parent">
-
-                <include
-                    layout="@layout/exercise_set"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="invisible" />
-            </RelativeLayout>
+                android:layout_width="197dp"
+                android:layout_height="match_parent" />
 
             <RelativeLayout
                 android:id="@+id/RL_for_ButtomsID"
@@ -292,6 +300,7 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAlignment="center"
+        android:textColorHint="@color/Text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

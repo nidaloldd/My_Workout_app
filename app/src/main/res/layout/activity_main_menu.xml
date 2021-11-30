@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/w0"
+    android:background="@color/p2"
+    android:theme="@style/Theme.My_Workout_app"
     tools:context=".MainMenuActivity">
 
     <TextView
@@ -14,45 +15,73 @@
         android:text="@string/app_name"
         android:textAlignment="center"
         android:textSize="34sp"
+        android:theme="@style/Theme.My_Workout_app"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.063" />
 
-    <Button
-        android:id="@+id/manageButtomID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:text="@string/manage_your_workouts"
+    <LinearLayout
+        android:layout_width="393dp"
+        android:layout_height="484dp"
+        android:background="@color/p3"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.303">
 
-    <Button
-        android:id="@+id/workoutPlan_ButtonID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="@string/workout_plan"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/manageButtomID"
-        app:layout_constraintHorizontal_bias="0.411"
-        app:layout_constraintStart_toStartOf="@+id/manageButtomID"
-        app:layout_constraintTop_toBottomOf="@+id/manageButtomID"
-        app:layout_constraintVertical_bias="0.0" />
+        <Button
+            android:id="@+id/manageButtomID"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="96dp"
+            android:rotationX="4"
+            android:rotationY="4"
+            android:text="@string/manage_your_workouts"
+            android:textAlignment="textStart"
+            android:textColor="@color/Text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:theme="@style/Theme.My_Workout_app"
+            app:icon="@drawable/book"
+            app:iconSize="50dp"
+            app:iconTintMode="multiply" />
 
-    <Button
-        android:id="@+id/exit_ButtonID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="@string/exit"
-        app:layout_constraintEnd_toEndOf="@+id/workoutPlan_ButtonID"
-        app:layout_constraintStart_toStartOf="@+id/workoutPlan_ButtonID"
-        app:layout_constraintTop_toBottomOf="@+id/workoutPlan_ButtonID" />
+        <Button
+            android:id="@+id/workoutPlan_ButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="48dp"
+            android:rotationX="4"
+            android:rotationY="4"
+            android:text="@string/workout_plan"
+            android:textColor="@color/Text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:icon="@drawable/make"
+            app:iconSize="50dp"
+            app:iconTintMode="multiply" />
+
+        <Button
+            android:id="@+id/exit_ButtonID"
+            android:layout_width="393dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="48dp"
+            android:isScrollContainer="false"
+            android:rotationX="4"
+            android:rotationY="4"
+            android:text="@string/exit"
+            android:textColor="@color/Text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:icon="@drawable/exit"
+            app:iconGravity="start"
+            app:iconPadding="20dp"
+            app:iconSize="50dp"
+            app:iconTintMode="multiply" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

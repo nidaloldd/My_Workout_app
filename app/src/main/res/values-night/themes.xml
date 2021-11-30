@@ -2,15 +2,17 @@
     <!-- Base application theme. -->
     <style name="Theme.My_Workout_app" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimaryVariant">@color/w2</item>
-        <item name="colorPrimary">@color/w1</item>
-        <item name="colorOnPrimary">@color/w0</item>
+        <item name="colorPrimaryVariant">@color/p1</item>
+        <item name="colorPrimary">@color/p2</item>
+        <item name="colorOnPrimary">@color/p3</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondaryVariant">@color/w2</item>
-        <item name="colorSecondary">@color/w1</item>
-        <item name="colorOnSecondary">@color/w0</item>
+        <item name="colorSecondaryVariant">@color/s1</item>
+        <item name="colorSecondary">@color/s2</item>
+        <item name="colorOnSecondary">@color/s3</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:fontFamily">cursive</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

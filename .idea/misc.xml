@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/activity_do_workout.xml" value="0.18" />
+        <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1984375" />
+        <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1984375" />
+        <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/activity_do_workout.xml" value="0.2" />
         <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/activity_main.xml" value="0.18" />
-        <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/activity_main_menu.xml" value="0.2" />
+        <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/activity_main_menu.xml" value="0.22" />
         <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/activity_manage.xml" value="0.18" />
-        <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/activity_planing.xml" value="0.25" />
+        <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/activity_planing.xml" value="0.18" />
         <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/activity_rest.xml" value="0.25" />
         <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/exercise_set.xml" value="0.2" />
         <entry key="..\:/Users/Kardos/AndroidStudioProjects/My_Workout_app/app/src/main/res/layout/list_row.xml" value="0.33" />

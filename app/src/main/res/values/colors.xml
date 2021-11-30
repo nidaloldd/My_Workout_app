@@ -8,16 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="w0">#FF03DAC5</color>
-    <color name="g1">#FF000000</color>
-    <color name="g2">#FF018786</color>
-    <color name="g3">#FF000000</color>
-
-
-    <color name="w0w">#AED581</color>
-    <color name="w1">#88A566</color>
-    <color name="w3">#61754B</color>
-    <color name="w">#3B4530</color>
-    <color name="w2">#000000</color>
-
+    <color name="Text">#FF000000</color>
+    <color name="p3">#ff0000</color>
+    <color name="p1">#ff5a36</color>
+    <color name="p2">#c20000</color>
+    <color name="s3">#fcb700</color>
+    <color name="s2">#ffe94d</color>
+    <color name="s1">#c48800</color>
 </resources>

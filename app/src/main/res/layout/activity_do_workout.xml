@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/w0"
+    android:background="@color/p2"
     tools:context=".DoWorkoutActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="406dp"
+        android:layout_width="0dp"
         android:layout_height="129dp"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
@@ -18,30 +18,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/workoutNameTextID"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:background="@color/p2"
+            android:hint="The Workout name"
+            android:textAlignment="center"
+            android:textColor="@color/Text"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
         <SeekBar
             android:id="@+id/WorkoutStateSeekBarID"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="match_parent"
-            android:layout_height="58dp"
+            android:layout_height="wrap_content"
+            android:background="@color/p1"
             android:max="10"
             android:progress="0"
-            android:progressTint="#3EA810"
-            android:thumb="@android:drawable/star_big_on" />
+            android:thumb="@android:drawable/btn_star_big_on" />
 
-        <TextView
-            android:id="@+id/workoutNameTextID"
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:hint="The Workout name"
-            android:textAlignment="center"
-            android:textSize="34sp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="371dp"
-        android:layout_height="220dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="355dp"
+        android:layout_height="314dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/p1"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,33 +55,39 @@
         <TextView
             android:id="@+id/exerciseNameTextID"
             android:layout_width="match_parent"
-            android:layout_height="107dp"
+            android:layout_height="160dp"
             android:text="TextView"
             android:textAlignment="center"
+            android:textColor="@color/Text"
             android:textSize="24sp" />
 
         <TextView
             android:id="@+id/exerciseRepsTextID"
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="160dp"
             android:text="TextView"
             android:textAlignment="center"
+            android:textColor="@color/Text"
             android:textSize="24sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="227dp"
+        android:layout_width="353dp"
+        android:layout_height="229dp"
+        android:background="@color/p1"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.0">
 
         <EditText
             android:id="@+id/RepsEditTextID"
-            android:layout_width="match_parent"
+            android:layout_width="327dp"
             android:layout_height="wrap_content"
+            android:background="@color/p2"
             android:ems="10"
             android:hint="completed reps"
             android:inputType="number"
@@ -90,9 +101,13 @@
 
         <Button
             android:id="@+id/doneButtonID"
-            android:layout_width="match_parent"
+            android:layout_width="343dp"
             android:layout_height="58dp"
-            android:text="@string/done" />
+            android:gravity="center|center_horizontal"
+            android:text="@string/done"
+            android:textAlignment="center"
+            android:textColor="@color/Text"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

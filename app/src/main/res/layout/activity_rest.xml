@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/w0"
+    android:background="@color/p1"
     tools:context=".RestActivity">
 
     <LinearLayout
@@ -27,7 +27,9 @@
         <Button
             android:id="@+id/DoneButtonID"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/skip_rest" />
+            android:layout_height="99dp"
+            android:text="@string/skip_rest"
+            android:textColor="@color/Text"
+            android:textSize="34sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

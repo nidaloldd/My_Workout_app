@@ -49,7 +49,6 @@ public class MainMenuActivity  extends AppCompatActivity  implements View.OnClic
                 System.exit(0);
                 break;
         }
-
     }
     @Override
     public void onBackPressed() {

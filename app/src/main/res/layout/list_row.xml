@@ -4,6 +4,7 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@color/p1"
     android:orientation="vertical"
     android:padding="40dp">
 
@@ -17,7 +18,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/w0"
+            android:background="@color/p3"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -70,19 +71,29 @@
                     android:id="@+id/doWorkoutButtonID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/do_workout" />
+                    android:backgroundTint="@color/p2"
+                    android:includeFontPadding="false"
+                    android:text="@string/do_workout"
+                    android:textColor="@color/Text"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/deleteWorkoutButtonID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/delete_workout" />
+                    android:backgroundTint="@color/p2"
+                    android:text="@string/delete_workout"
+                    android:textColor="@color/Text"
+                    android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/setWorkoutButtonID"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/set_workout" />
+                    android:backgroundTint="@color/p2"
+                    android:text="@string/set_workout"
+                    android:textColor="@color/Text"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
